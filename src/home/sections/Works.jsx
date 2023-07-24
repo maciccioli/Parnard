@@ -24,6 +24,19 @@ import work14 from '../../assets/work1-4.jpg';
 import work15 from '../../assets/work1-5.jpg';
 import work16 from '../../assets/work1-6.jpg';
 
+import work21 from '../../assets/work2-1.jpg';
+import work22 from '../../assets/work2-2.jpg';
+import work23 from '../../assets/work2-3.jpg';
+import work24 from '../../assets/work2-4.jpg';
+import work25 from '../../assets/work2-5.jpg';
+import work26 from '../../assets/work2-6.jpg';
+
+import work31 from '../../assets/work3-1.jpg';
+import work32 from '../../assets/work3-2.jpg';
+import work33 from '../../assets/work3-3.jpg';
+import work34 from '../../assets/work3-4.jpg';
+import work35 from '../../assets/work3-5.jpg';
+import work36 from '../../assets/work3-6.jpg';
 
 const Works= () => {
   const theme = useTheme();
@@ -31,6 +44,31 @@ const Works= () => {
 
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedWork, setSelectedWork] = useState(null);
+
+  const handleOnClose = () => {
+    setSelectedIndex(0);
+    setOpenDialog(false);
+    setSelectedWork(null);
+  }
+
+  const handleSelectWork = (index) => {
+    setSelectedWork(index);
+    setOpenDialog(true);
+  }
+
+  const getCurrentWorkList = () => {
+    switch(selectedWork) {
+      case 0:
+        return work1List;
+      case 1:
+        return work2List;
+      case 2:
+        return work3List;
+      default:
+        return null;
+    }
+  }
 
   const worksList = [
     {
@@ -40,12 +78,12 @@ const Works= () => {
     },
     {
       imageUrl: work2,
-      name: "Inoxsystem 1",
+      name: "Inoxsystem 2",
       description: 'Proyecto realizado para la industria láctea. Se diseñó y ejecutó el sistema de drenaje más la provisión del piso industrial para el área de pasteurización y procesamiento de leche. ',
     },
     {
       imageUrl: work3,
-      name: "Inoxsystem 1",
+      name: "Inoxsystem 3",
       description: 'Proyecto realizado para la industria cárnica. Se diseñó y ejecutó el sistema de drenaje más la provisión del piso industrial para el área de procesamiento de carnes y embutidos. ',
     },
   ];
@@ -69,7 +107,49 @@ const Works= () => {
     {
       imageUrl: work16,
     }
-  ]
+  ];
+
+  const work2List = [
+    {
+      imageUrl: work21,
+    },
+    {
+      imageUrl: work22,
+    },
+    {
+      imageUrl: work23,
+    },
+    {
+      imageUrl: work24,
+    },
+    {
+      imageUrl: work25,
+    },
+    {
+      imageUrl: work26,
+    }
+  ];
+
+  const work3List = [
+    {
+      imageUrl: work31,
+    },
+    {
+      imageUrl: work32,
+    },
+    {
+      imageUrl: work33,
+    },
+    {
+      imageUrl: work34,
+    },
+    {
+      imageUrl: work35,
+    },
+    {
+      imageUrl: work36,
+    }
+  ];
 
   return (
     <section className="section bg-light-gray" id="works">
@@ -88,7 +168,7 @@ const Works= () => {
                   sx={{
                     cursor: 'pointer',
                   }}
-                  onClick={() => setOpenDialog(true)}
+                  onClick={() => handleSelectWork(index)}
                 >
                   <img
                     className="w-full"
@@ -112,7 +192,7 @@ const Works= () => {
     {openDialog && (
       <Dialog
         open={openDialog}
-        onClose={() => setOpenDialog(false)}
+        onClose={handleOnClose}
         maxWidth='lg'
       >
         {selectedIndex !== 0 && (
@@ -142,7 +222,7 @@ const Works= () => {
             </IconButton>
         )}
         <CardMedia
-          src={work1List[selectedIndex].imageUrl}
+          src={getCurrentWorkList()[selectedIndex].imageUrl}
           component="img"
           loading="lazy"
           width={900}

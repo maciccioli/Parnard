@@ -93,6 +93,11 @@ const TopBar1 = () => {
               </ScrollTo>
             </li>
             <li>
+              <ScrollTo to="works" onScroll={close}>
+                Trabajos
+              </ScrollTo>
+            </li>
+            <li>
               <ScrollTo to="industrialSolutions" onScroll={close}>
                 Soluciones Industriales
               </ScrollTo>
