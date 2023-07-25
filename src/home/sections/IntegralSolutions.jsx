@@ -38,6 +38,15 @@ const IntegralSolutions = () => {
 
   const [categorySelected, setCategorySelected] = useState(null);
 
+  const handleSelectCategory = (newCategory) => {
+    if(categorySelected && newCategory.name === categorySelected.name){
+      setCategorySelected(null);
+    }
+    else{
+      setCategorySelected(newCategory);
+    }
+  }
+
   const getCurrentCategoryList = () => {
     switch(categorySelected.name) {
       case "Sistema de Drenaje":
@@ -162,7 +171,7 @@ const IntegralSolutions = () => {
                       src={category.imageUrl}
                       component='img'
                       alt={category.name}
-                      onClick={() => setCategorySelected(category)}
+                      onClick={() => handleSelectCategory(category)}
                     />
                     <Box sx={{ mt: 3, display: 'flex', width: '100%', justifyContent: 'center'}}>
                       <h5 className="font-medium">{category.name}</h5>

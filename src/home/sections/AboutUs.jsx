@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Grid,
-  Icon,
   useMediaQuery,
   Box,
   Typography,
@@ -9,6 +8,7 @@ import {
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import { useTheme } from '@mui/material/styles';
+import backgroudImage from '../../assets/about-us-2.jpg'
 
 const AboutUs = () => {
   const theme = useTheme();
@@ -28,7 +28,7 @@ const AboutUs = () => {
           >
             <Grid item xs={6} sx={{ paddingTop: '0px !important'}}>
               <img
-                src="/assets/images/about-us-2.jpg"
+                src={backgroudImage}
                 alt="aboutUs"
                 className="max-w-full border-radius-12"
               />

@@ -2,7 +2,8 @@ import React from "react";
 import {
   Route,
   Switch,
-  HashRouter as Router,Redirect
+  BrowserRouter as Router,
+  Redirect,
 } from "react-router-dom";
 
 import { ThemeProvider } from '@mui/material/styles';
@@ -12,7 +13,7 @@ import { Theme } from "./theme";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import GlobalCss from "./styles/jss/GlobalCss";
 
-import Landing1 from "./home/Landing1";
+import LandingPage from "./home/LandingPage";
 
 
 function App() {
@@ -23,10 +24,10 @@ function App() {
           className="h-full-screen scrollable-content"
           option={{ suppressScrollX: true }}
         >
-           <Router basename="/">
+           <Router>
             <Switch>
-              <Route path="/home" component={Landing1} exact />
-              <Redirect path="/" exact to="home" />
+              <Route path="/" component={LandingPage} exact />
+              <Redirect path="/" exact to="/" />
               {/* <Route component={Error} /> */}
             </Switch>
           </Router>

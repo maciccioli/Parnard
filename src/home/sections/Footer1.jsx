@@ -3,6 +3,8 @@ import {
   Box,
   Grid,
   Typography,
+  IconButton,
+  Link,
 } from "@mui/material";
 
 import sewerage from '../../assets/sewerage.svg';
@@ -34,6 +36,15 @@ const Footer1 = () => {
       img: general,
     },
   ];
+
+  const messageLucas = 'Hola Lucas! Espero que te encuentres bien. Me gustaría hablar contigo. ¿Cuándo podríamos coordinar una llamada? Gracias!';
+  const messageAgustin = 'Hola Agustín! Espero que te encuentres bien. Me gustaría hablar contigo. ¿Cuándo podríamos coordinar una llamada? Gracias!';
+
+  const encodedMessageLucas = encodeURIComponent(messageLucas);
+  const encodedMessageAgustin = encodeURIComponent(messageAgustin);
+
+  const whatsappUrlLucas = `https://wa.me/541150116800?text=${encodedMessageLucas}`;
+  const whatsappUrlAgustin = `https://wa.me/541136541997?text=${encodedMessageAgustin}`;
 
   return (
     <Box sx={{ backgroundColor: '#3f50b5'}}>
@@ -96,10 +107,13 @@ const Footer1 = () => {
                   >
                     Lucas Guido Hiernard
                   </Typography>
-                  <WhatsAppIcon
+                  <IconButton
+                    component={Link}
+                    href={whatsappUrlLucas}
+                    target="_blank"
                     sx={{
-                      mr: 1.2,
-                      width: '20px',
+                      p: 0,
+                      mr: 1,
                       cursor: 'pointer',
                       color: 'grey',
                       transition: 'color 0.3s ease',
@@ -107,31 +121,42 @@ const Footer1 = () => {
                         color: '#23d366',
                       }
                     }}
-                  />
-                  <EmailIcon
+                  >
+                    <WhatsAppIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton
+                    component={Link}
+                    href="mailto:lucashiernard@parnard.com"
+                    target="_blank"
                     sx={{
-                      mr: 1.2,
-                      width: '20px',
+                      p: 0,
+                      mr: 1,
                       cursor: 'pointer',
                       color: 'grey',
                       transition: 'color 0.3s ease',
                       ':hover': {
-                        color: 'red',
+                        color: 'blue',
                       }
                     }}
-                  />
-                  <LinkedInIcon
+                  >
+                    <EmailIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton
+                    component={Link}
+                    href="https://www.linkedin.com/in/lucas-guido-hiernard-806055191/"
+                    target="_blank"
                     sx={{
-                      mr: 1.2,
-                      width: '20px',
-                      cursor: 'pointer',
+                      p: 0,
+                      mr: 1,
                       color: 'grey',
                       transition: 'color 0.3s ease',
                       ':hover': {
                         color: '#0a66c2',
-                      }
+                      },
                     }}
-                  />
+                  >
+                    <LinkedInIcon fontSize="small" />
+                  </IconButton>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 1.8 }}>
                   <Typography
@@ -144,10 +169,13 @@ const Footer1 = () => {
                   >
                     Agustín Parodi
                   </Typography>
-                  <WhatsAppIcon
+                  <IconButton
+                    component={Link}
+                    href={whatsappUrlAgustin}
+                    target="_blank"
                     sx={{
-                      mr: 1.2,
-                      width: '20px',
+                      p: 0,
+                      mr: 1,
                       cursor: 'pointer',
                       color: 'grey',
                       transition: 'color 0.3s ease',
@@ -155,31 +183,42 @@ const Footer1 = () => {
                         color: '#23d366',
                       }
                     }}
-                  />
-                  <EmailIcon
+                  >
+                    <WhatsAppIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton
+                    component={Link}
+                    href="mailto:agustinparodi@parnard.com"
+                    target="_blank"
                     sx={{
-                      mr: 1.2,
-                      width: '20px',
+                      p: 0,
+                      mr: 1,
                       cursor: 'pointer',
                       color: 'grey',
                       transition: 'color 0.3s ease',
                       ':hover': {
-                        color: 'red',
+                        color: 'blue',
                       }
                     }}
-                  />
-                  <LinkedInIcon
+                  >
+                    <EmailIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton
+                    component={Link}
+                    href="https://www.linkedin.com/in/agustin-parodi-036bbb117/"
+                    target="_blank"
                     sx={{
-                      mr: 1.2,
-                      width: '20px',
-                      cursor: 'pointer',
+                      p: 0,
+                      mr: 1,
                       color: 'grey',
                       transition: 'color 0.3s ease',
                       ':hover': {
                         color: '#0a66c2',
-                      }
+                      },
                     }}
-                  />
+                  >
+                    <LinkedInIcon fontSize="small" />
+                  </IconButton>
                 </Box>
                 <Typography
                   sx={{

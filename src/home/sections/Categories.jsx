@@ -14,12 +14,12 @@ import {
 } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import Carousel from "../common/Carousel";
-import pdfIcon from '../../assets/pdfIcon.png'
+import pdfIcon from '../../assets/pdfIcon.jpg'
 
 import drainageSystem from '../../assets/drainageSystem.jpg';
 import refrigerationSystem from '../../assets/refrigerationSystem.jpg';
 import controlledAirSystem from '../../assets/controlledAirSystem.jpg';
-import catalogoGeneral from '../../assets/catalogoGeneral.png';
+import catalogoGeneral from '../../assets/catalogoGeneral.jpg';
 
 import sumiderosCategory from '../../assets/sumiderosCategory.jpg';
 import canaletaCategories from '../../assets/canaletaCategories.jpg';
@@ -51,6 +51,15 @@ const Categories= () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
   const [categorySelected, setCategorySelected] = useState(null);
+
+  const handleSelectCategory = (newCategory) => {
+    if(categorySelected && newCategory.name === categorySelected.name){
+      setCategorySelected(null);
+    }
+    else{
+      setCategorySelected(newCategory);
+    }
+  }
 
   const getCurrentCategoryList = () => {
     switch(categorySelected.name) {
@@ -212,7 +221,7 @@ const Categories= () => {
                       src={category.imageUrl}
                       component='img'
                       alt={category.name}
-                      onClick={() => setCategorySelected(category)}
+                      onClick={() => handleSelectCategory(category)}
                     />
                     <Box sx={{ mt: 3, display: 'flex', width: '100%', justifyContent: 'center'}}>
                       <h5 className="font-medium">{category.name}</h5>
