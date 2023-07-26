@@ -11,7 +11,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import EmailIcon from '@mui/icons-material/Email';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ScrollTo from "../common/ScrollTo";
-import logo from '../../assets/blackNavbarLogo.png';
+import logo from '../../assets/blackNavbarLogo.jpg';
 
 const TopBar1 = () => {
   const [isTop, setIsTop] = useState(true);
