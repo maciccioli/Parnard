@@ -34,7 +34,9 @@ import controlledAirSystem from '../../assets/controlledAirSystem.jpg';
 
 const IntegralSolutions = () => {
   const theme = useTheme();
+
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isSm = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [categorySelected, setCategorySelected] = useState(null);
 
@@ -185,14 +187,24 @@ const IntegralSolutions = () => {
                 </Grid>
               ))}
             </Grid>
-            {categorySelected && categorySelected.name !== 'Sistema de Refrigeración' && (
+            {categorySelected && (categorySelected.name !== 'Sistema de Refrigeración' || isSm) && (
               <Box sx={{ mt: '50px' }}>
                 <Carousel
-                  slidesPerView={4}
+                  slidesPerView={isMobile ? 1 : isSm ? 2 : 4}
                   height={260}
+                  carouselId='solutions-swiper'
                 >
                   {getCurrentCategoryList().map((categoryList) => (
-                    <>
+                    <Box
+                      key={categoryList.name}
+                      sx={{
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                      }}
+                    >
                       <CardMedia
                         loading="lazy"
                         sx={{
@@ -216,12 +228,12 @@ const IntegralSolutions = () => {
                       >
                         <h5 className="font-medium">{categoryList.name}</h5>
                       </Box>
-                    </>
+                    </Box>
                   ))}
               </Carousel>
             </Box>
             )}
-            {categorySelected && categorySelected.name === 'Sistema de Refrigeración' && (
+            {categorySelected && categorySelected.name === 'Sistema de Refrigeración' && !isSm && (
               <Box
                 sx={{
                   mt: '50px',
@@ -230,7 +242,15 @@ const IntegralSolutions = () => {
                 }}
               >
                 {getCurrentCategoryList().map((categoryList) => (
-                  <Box sx={{ mr: 4 }}>
+                  <Box
+                    sx={{
+                      width: '100%',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}
+                  >
                     <CardMedia
                       loading="lazy"
                       sx={{

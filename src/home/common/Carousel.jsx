@@ -119,15 +119,14 @@ const Carousel = (props) => {
       <div className="swiper-container" id={carouselId}>
         <div className="swiper-wrapper" style={{ height: isIntegralSolutions ? '600px' : height }}>
           {Children.map(children, (child, index) => (
-            <div className="swiper-slide h-auto p-1 pb-6">{child}</div>
+            <div className="swiper-slide h-auto p-1 pb-6">
+              {child}
+            </div>
           ))}
         </div>
-
-        {/* pagination */}
         <div className={clsx("swiper-pagination relative", paginationClass)} />
       </div>
 
-      {/* navigation */}
       {navigation && (
         <Fab
           className={clsx(

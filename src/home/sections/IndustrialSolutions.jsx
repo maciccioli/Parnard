@@ -3,13 +3,18 @@ import {
   Grid,
   Box,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
+import { useTheme } from '@mui/material/styles';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
 import ConstructionOutlinedIcon from '@mui/icons-material/ConstructionOutlined';
 
 const IndustrialSolutions = () => {
+  const theme = useTheme();
+  const isSm = useMediaQuery(theme.breakpoints.down("sm"));
+
     const firstColumn = [
         {
           icon: ConstructionOutlinedIcon,
@@ -76,7 +81,7 @@ const IndustrialSolutions = () => {
                 spacing={2}
                 sx={{ mt: '40px' }}
               >
-                <Grid item xs={6} sx={{ pr: '40px' }}>
+                <Grid item xs={12} md={6} sx={{ pr: '40px' }}>
                   <Box sx={{ mb: 3 }}>
                     <Typography 
                       sx={{ color: '#666 !important', fontWeight: 500, fontSize: '16px' }}
@@ -108,7 +113,7 @@ const IndustrialSolutions = () => {
                     </Box>
                   ))}
                 </Grid>
-                <Grid item xs={6} sx={{ pl: '40px !important' }}>
+                <Grid item xs={12} md={6} sx={{ pl: isSm ? '16px !important' : '40px !important', pr: isSm ? '40px' : '0px' }}>
                   <Box sx={{ mb: 3 }}>
                     <Typography 
                       sx={{ color: '#666 !important', fontWeight: 500, fontSize: '16px' }}

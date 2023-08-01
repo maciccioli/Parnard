@@ -4,11 +4,13 @@ import {
   useMediaQuery,
   Box,
   Typography,
+  CardMedia,
 } from "@mui/material";
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import { useTheme } from '@mui/material/styles';
-import backgroudImage from '../../assets/about-us-2.jpg'
+import backgroudImage from '../../assets/sobreNosotros.jpg'
+import backgroudImage2 from '../../assets/sobreNosotros2.jpg'
 
 const AboutUs = () => {
   const theme = useTheme();
@@ -26,21 +28,43 @@ const AboutUs = () => {
             spacing='50px'
             sx={{ mt: '50px'}}
           >
+            <Grid item xs={12} md={6} sx={{ paddingTop: '0px !important'}}>
+              <Box>
+                <Typography sx={{ letterSpacing: '0.015em', textAlign: 'justify'}}>
+                Bienvenidos a Parnard, una empresa dedicada a la ingeniería, asesoría técnica y venta de soluciones para el drenaje de líquidos, sistemas de refrigeración y productos de aire controlado. Gracias a nuestra alianza estratégica con Inoxsystem SRL, Standard Tech SRL y CPA Engineered Solutions , nos hemos convertido en los distribuidores y representantes exclusivos de sus servicios en América Latina, consolidando nuestra posición en el mercado.
+                </Typography>
+                <Typography sx={{ mt: 2, letterSpacing: '0.015em', textAlign: 'justify' }}>
+                Nuestra principal fortaleza radica en la capacidad de proporcionar soluciones integrales a clientes de diversos sectores, incluyendo alimentación, farmacéutica, vitivinícola, cosmética e industrial. Trabajamos en estrecha colaboración con nuestros clientes, comprendiendo sus necesidades específicas y diseñando soluciones personalizadas que se adaptan a sus requerimientos.
+                </Typography>
+              </Box>
+            </Grid>
             <Grid item xs={6} sx={{ paddingTop: '0px !important'}}>
-              <img
+              <CardMedia
+                loading="lazy"
+                sx={{
+                  width: '100%',
+                  borderRadius: '16px',
+                  objectFit: 'cover',
+                }}
                 src={backgroudImage}
-                alt="aboutUs"
-                className="max-w-full border-radius-12"
+                component='img'
+                alt='Sobre Nosotros'
               />
             </Grid>
             <Grid item xs={6} sx={{ paddingTop: '0px !important'}}>
-            <Box>
-              <Typography sx={{ letterSpacing: '0.015em', textAlign: 'justify'}}>
-              Bienvenidos a Parnard, una empresa dedicada a la ingeniería, asesoría técnica y venta de soluciones para el drenaje de líquidos, sistemas de refrigeración y productos de aire controlado. Gracias a nuestra alianza estratégica con Inoxsystem SRL, Standard Tech SRL y CPA Engineered Solutions , nos hemos convertido en los distribuidores y representantes exclusivos de sus servicios en América Latina, consolidando nuestra posición en el mercado.
-              </Typography>
-              <Typography sx={{ mt: 2, letterSpacing: '0.015em', textAlign: 'justify' }}>
-              Nuestra principal fortaleza radica en la capacidad de proporcionar soluciones integrales a clientes de diversos sectores, incluyendo alimentación, farmacéutica, vitivinícola, cosmética e industrial. Trabajamos en estrecha colaboración con nuestros clientes, comprendiendo sus necesidades específicas y diseñando soluciones personalizadas que se adaptan a sus requerimientos.
-              </Typography>
+              <CardMedia
+                loading="lazy"
+                sx={{
+                  width: '100%',
+                  borderRadius: '16px',
+                  objectFit: 'cover',
+                }}
+                src={backgroudImage2}
+                component='img'
+                alt='Sobre Nosotros'
+              />
+            </Grid>
+            <Grid item xs={12} md={6} sx={{ paddingTop: '0px !important'}}>
               <Box sx={{ display: 'flex', mt: 4}}>
                 <Box
                   sx={{
@@ -57,7 +81,7 @@ const AboutUs = () => {
                 >
                   <BusinessCenterIcon sx={{ color: '#FFFFFF', width: '24px', height: '24px'}} />
                 </Box>
-                <Typography sx={{ fontSize: '14px', textAlign: 'justify'}}>
+                <Typography sx={{ textAlign: 'justify'}}>
                 Contamos con un equipo altamente capacitado que se dedica a brindar asesoramiento técnico especializado y a ofrecer productos de la más alta calidad. Nos complace poder ayudar a nuestros clientes a optimizar sus sistemas, garantizando la eficiencia y el rendimiento óptimo en sus operaciones.
                 </Typography>
               </Box>
@@ -77,11 +101,10 @@ const AboutUs = () => {
                 >
                   <EngineeringIcon sx={{ color: '#FFFFFF', width: '24px', height: '24px'}} />
                 </Box>
-                <Typography sx={{ fontSize: '14px', textAlign: 'justify'}}>
+                <Typography sx={{ textAlign: 'justify'}}>
                   En Parnard, entendemos la importancia de contar con sistemas eficaces, innovadores y confiables en las industrias que servimos. Ofrecemos a nuestros clientes una experiencia segura, abordando sus necesidades varias a través de un único proveedor de confianza. 
                 </Typography>
               </Box>
-            </Box>
             </Grid>
           </Grid>
           <Box sx={{ display: 'flex', mt: '50px', justifyContent: 'space-between' }}>

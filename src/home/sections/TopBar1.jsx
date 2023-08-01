@@ -11,7 +11,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import EmailIcon from '@mui/icons-material/Email';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ScrollTo from "../common/ScrollTo";
-import logo from '../../assets/blackNavbarLogo.jpg';
+import logo from '../../assets/blackNavbarLogoEsp.png';
 
 const TopBar1 = () => {
   const [isTop, setIsTop] = useState(true);
@@ -72,7 +72,7 @@ const TopBar1 = () => {
       >
         <Box>
           <Box className="brand" sx={{ display: 'flex', alignItems: 'center'}}>
-            <img src={logo} height='38px' alt="Parnard" />
+            <img src={logo} height='46px' alt="Parnard" />
           </Box>
         </Box>
         <Box>
@@ -120,7 +120,7 @@ const TopBar1 = () => {
         <Box sx={{ display: 'flex' }}>
           <IconButton
             component={Link}
-            href="https://www.linkedin.com/in/parnard-soluciones-industriales-5a76a1272/"
+            href="https://www.linkedin.com/company/parnard/about/"
             target="_blank"
             sx={{
               mr: 1,
@@ -135,7 +135,7 @@ const TopBar1 = () => {
           </IconButton>
           <IconButton
             component={Link}
-            href="https://www.youtube.com"
+            href="https://www.youtube.com/@parnardsi/featured"
             target="_blank"
             sx={{
               mr: 1.6,

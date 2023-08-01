@@ -1,5 +1,9 @@
 import React from "react";
-import { Grid, Icon, Fab, darken, Typography } from "@mui/material";
+import {
+  Grid,
+  darken,
+  Typography,
+} from "@mui/material";
 import { makeStyles } from '@mui/styles';
 import clsx from "clsx";
 
@@ -9,7 +13,7 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
     overflow: "visible !important",
     height: 'calc(100vh - 60px)',
     background:
-      "url(./assets/images/homePageImage.jpg) center center/cover no-repeat",
+      "url(./assets/images/portada.jpg) center center/cover no-repeat",
     "& h1, h2, h3, h4, h5, h6": {
       color: "#fff",
     },
@@ -76,7 +80,7 @@ const Intro1 = () => {
   const classes = useStyles();
 
   return (
-    <section className={clsx("section text-white")} id="intro1" style={{ paddingBottom: '0px'}}>
+    <section className={clsx("section text-white")} id="intro1" style={{ paddingBottom: '0px', paddingTop: '60px'}}>
       <div className={classes.introWrapper}>
         <div className="container">
           <Grid container spacing={3} justify="center">

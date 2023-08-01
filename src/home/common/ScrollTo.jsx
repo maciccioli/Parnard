@@ -1,4 +1,7 @@
 import React from "react";
+import {
+  Link,
+} from "@mui/material";
 import { scrollTo } from "../../utils";
 
 const ScrollTo = ({ to, onScroll, children }) => {
@@ -6,7 +9,7 @@ const ScrollTo = ({ to, onScroll, children }) => {
   if (!appContainer) appContainer = window;
 
   return (
-    <a
+    <Link
       href={`#${to}`}
       onClick={(e) => {
         scrollTo(appContainer, to);
@@ -15,9 +18,15 @@ const ScrollTo = ({ to, onScroll, children }) => {
           onScroll(e);
         }
       }}
+      sx={{
+        ':hover': {
+          backgroundColor: '#3f50b5 !important',
+          color: '#FFFFFF !important'
+        }
+      }}
     >
       {children}
-    </a>
+    </Link>
   );
 };
 

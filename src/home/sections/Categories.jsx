@@ -48,7 +48,9 @@ import barrerasAire from '../../assets/barrerasAire.pdf';
 
 const Categories= () => {
   const theme = useTheme();
+
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isSm = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [categorySelected, setCategorySelected] = useState(null);
 
@@ -236,15 +238,23 @@ const Categories= () => {
               ))}
             </Grid>
             {categorySelected
-              && categorySelected.name !== 'Sistema de Aire Controlado' 
-              && categorySelected.name !== 'Catálogo General' && (
+              && (categorySelected.name !== 'Sistema de Aire Controlado' || isSm) && categorySelected.name !== 'Catálogo General' && (
               <Box sx={{ mt: '50px' }}>
                 <Carousel
-                  slidesPerView={4}
+                  slidesPerView={isMobile ? 1 : isSm ? 2 : 4}
                   height={260}
+                  carouselId='category-swiper'
                 >
                   {getCurrentCategoryList().map((categoryList) => (
-                    <>
+                    <Box
+                      sx={{
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                      }}
+                    >
                       <CardMedia
                         loading="lazy"
                         sx={{
@@ -268,12 +278,12 @@ const Categories= () => {
                       >
                         <h5 className="font-medium">{categoryList.title}</h5>
                       </Box>
-                    </>
+                    </Box>
                   ))}
               </Carousel>
               </Box>
             )}
-            {categorySelected && categorySelected.name === 'Sistema de Aire Controlado' && (
+            {categorySelected && categorySelected.name === 'Sistema de Aire Controlado' && !isSm && (
               <Box
                 sx={{
                   mt: '50px',
@@ -282,7 +292,15 @@ const Categories= () => {
                 }}
               >
                 {getCurrentCategoryList().map((categoryList) => (
-                  <Box sx={{ mr: 4 }}>
+                  <Box
+                    sx={{
+                      width: '100%',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}
+                  >
                     <CardMedia
                       loading="lazy"
                       sx={{
