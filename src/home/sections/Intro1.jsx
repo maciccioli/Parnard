@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import {
   Grid,
   darken,
@@ -79,6 +80,8 @@ const useStyles = makeStyles(({ palette, ...theme }) => ({
 const Intro1 = () => {
   const classes = useStyles();
 
+  const { t } = useTranslation();
+
   return (
     <section className={clsx("section text-white")} id="intro1" style={{ paddingBottom: '0px', paddingTop: '60px'}}>
       <div className={classes.introWrapper}>
@@ -86,11 +89,11 @@ const Intro1 = () => {
           <Grid container spacing={3} justify="center">
             <Grid item md={6}>
               <h1 className={clsx("mb-6 text-48", classes.title)}>
-                Soluciones integrales adaptadas a sus necesidades
+                {t('HOMEPAGE_TITLE')}
               </h1>
               <div className="mb-10 list" >
                 <Typography sx={{ fontSize: '20px', color: '#FFFFFF !important' }}>
-                  Con nuestra inserción en el mercado logramos ofrecer componentes, sistemas, productos e ingeniería para el drenaje de sus procesos industriales. 
+                  {t('HOMEPAGE_DESCRIPTION')}
                 </Typography>
               </div>
             </Grid>

@@ -16,6 +16,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
+import { Link as ScrollLink } from 'react-scroll';
+
 const Footer1 = () => {
 
   const categoriesList = [
@@ -46,6 +48,13 @@ const Footer1 = () => {
   const whatsappUrlLucas = `https://wa.me/541150116800?text=${encodedMessageLucas}`;
   const whatsappUrlAgustin = `https://wa.me/541136541997?text=${encodedMessageAgustin}`;
 
+  const handleCategoryClick = () => {
+    const productsElement = document.getElementById('products');
+    if (productsElement) {
+      productsElement.scrollIntoView();
+    }
+  };
+
   return (
     <Box sx={{ backgroundColor: '#3f50b5'}}>
       <div className="container">
@@ -73,19 +82,23 @@ const Footer1 = () => {
               </h4>
               <Box>
                 {categoriesList.map((category) => (
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 1.8 }}>
-                    <img src={category.img} alt={category.title} />
-                    <Typography
-                      sx={{
-                        color: '#ffffffb3 !important',
-                        fontSize: '14px',
-                        fontWeight: 400,
-                        ml: 1,
-                      }}
+                    <Box
+                      sx={{ display: 'flex', alignItems: 'center', mb: 1.8 }}
+                      onClick={handleCategoryClick}
                     >
-                      {category.title}
-                    </Typography>
-                  </Box>
+                      <img src={category.img} alt={category.title} />
+                      <Typography
+                        sx={{
+                          color: '#ffffffb3 !important',
+                          fontSize: '14px',
+                          fontWeight: 400,
+                          ml: 1,
+                        }}
+                      >
+                        {category.title}
+                      </Typography>
+                    </Box>
+
                 ))}
               </Box>
             </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import {
   Box,
   Grid,
@@ -41,6 +42,7 @@ import work36 from '../../assets/work3-6.jpg';
 const Works= () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const { t } = useTranslation();
 
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -74,17 +76,17 @@ const Works= () => {
     {
       imageUrl: work1,
       name: "Inoxsystem 1",
-      description: 'Proyecto realizado para la industria láctea. Se diseñó y ejecutó el sistema de drenaje más la instalación del piso industrial para el área de procesamiento y embotellado de leche.',
+      description: t('WORK_DESCRIPTION_1'),
     },
     {
       imageUrl: work2,
       name: "Inoxsystem 2",
-      description: 'Proyecto realizado para la industria láctea. Se diseñó y ejecutó el sistema de drenaje más la provisión del piso industrial para el área de pasteurización y procesamiento de leche. ',
+      description: t('WORK_DESCRIPTION_2'),
     },
     {
       imageUrl: work3,
       name: "Inoxsystem 3",
-      description: 'Proyecto realizado para la industria cárnica. Se diseñó y ejecutó el sistema de drenaje más la provisión del piso industrial para el área de procesamiento de carnes y embutidos. ',
+      description: t('WORK_DESCRIPTION_3'),
     },
   ];
 
@@ -156,7 +158,7 @@ const Works= () => {
       <div className="container">
         <Box spacing={isMobile ? 4 : 10}>
           <h2 className="mt-0 mb-0 inline-block">
-            Trabajos Realizados
+            {t('JOBS')}
           </h2>
           <Box sx={{ mt: '50px'}}>
             <Grid container spacing={3}>

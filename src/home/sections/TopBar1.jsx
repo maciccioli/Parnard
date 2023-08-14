@@ -1,21 +1,44 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import { debounce, classList } from "../../utils";
 import {
   Box,
   Icon,
   IconButton,
   Link,
+  Button,
+  Menu,
+  MenuItem,
+  Typography,
 } from "@mui/material";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import EmailIcon from '@mui/icons-material/Email';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import ScrollTo from "../common/ScrollTo";
 import logo from '../../assets/blackNavbarLogoEsp.png';
 
 const TopBar1 = () => {
   const [isTop, setIsTop] = useState(true);
   const [isClosed, setIsClosed] = useState(true);
+
+  const { i18n, t } = useTranslation();
+
+  const currentLanguage = i18n.language;
+
+  const handleLanguageChange = (language) => {
+    i18n.changeLanguage(language);
+  };
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   let scrollableElement = document.querySelector(".scrollable-content");
   if (!scrollableElement) scrollableElement = window;
@@ -60,7 +83,7 @@ const TopBar1 = () => {
         "header-fixed": !isTop,
         closed: isClosed,
       })}
-      style={{ borderBottom: '1px solid #00000014', zIndex: 100 }}
+      style={{ borderBottom: '1px solid #00000014', zIndex: 100}}
     >
       <Box
         className="container header-container"
@@ -68,6 +91,7 @@ const TopBar1 = () => {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          maxWidth: '1300px',
         }}
       >
         <Box>
@@ -79,32 +103,32 @@ const TopBar1 = () => {
           <ul className="navigation">
             <li>
               <ScrollTo to="aboutUs" onScroll={close}>
-                Nosotros
+                {t('ABOUT_US')}
               </ScrollTo>
             </li>
             <li>
               <ScrollTo to="integralSolutions" onScroll={close}>
-                Soluciones Aplicables
+                {t('APPLICABLE_SOLUTIONS')}
               </ScrollTo>
             </li>
             <li>
               <ScrollTo to="products" onScroll={close}>
-                Productos
+                {t('PRODUCTS')}
               </ScrollTo>
             </li>
             <li>
               <ScrollTo to="works" onScroll={close}>
-                Trabajos
+                {t('JOBS')}
               </ScrollTo>
             </li>
             <li>
               <ScrollTo to="industrialSolutions" onScroll={close}>
-                Soluciones Industriales
+              {t('INDUSTRIAL_SOLUTIONS')}
               </ScrollTo>
             </li>
             <li>
               <ScrollTo to="contact" onScroll={close}>
-                Contacto
+                {t('CONTACT')}
               </ScrollTo>
             </li>
           </ul>
@@ -181,6 +205,39 @@ const TopBar1 = () => {
           >
             <WhatsAppIcon />
           </IconButton>
+          <Button
+            aria-controls={open ? 'basic-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={handleClick}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center'}}>
+              <Typography sx={{ fontSize: '14px', fontWeight: 500, letterSpacing: '0.5px'}}>
+                {currentLanguage.toUpperCase()}
+              </Typography>
+              <ArrowDropDownOutlinedIcon fontSize="small" sx={{ color: '#9b9c9e' }} />
+            </Box>
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}
+          >
+            <MenuItem onClick={() => handleLanguageChange('es')}>
+              <Typography sx={{ fontSize: '14px'}}>
+                ES
+              </Typography>
+            </MenuItem>
+            <MenuItem onClick={() => handleLanguageChange('en')}>
+              <Typography sx={{ fontSize: '14px'}}>
+                EN
+              </Typography>
+            </MenuItem>
+          </Menu>
         </Box>
       </Box>
     </section>

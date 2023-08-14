@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import {
   Grid,
   useMediaQuery,
@@ -14,14 +15,15 @@ import backgroudImage2 from '../../assets/sobreNosotros2.jpg'
 
 const AboutUs = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const { t } = useTranslation();
 
   return (
     <section className="section bg-light-gray" id="aboutUs">
       <div className="container">
         <Box spacing={isMobile ? 4 : 10}>
           <h2 className="mt-0 mb-0 inline-block">
-            Nosotros
+            {t('ABOUT_US')}
           </h2>
           <Grid
             container
@@ -31,81 +33,131 @@ const AboutUs = () => {
             <Grid item xs={12} md={6} sx={{ paddingTop: '0px !important'}}>
               <Box>
                 <Typography sx={{ letterSpacing: '0.015em', textAlign: 'justify'}}>
-                Bienvenidos a Parnard, una empresa dedicada a la ingeniería, asesoría técnica y venta de soluciones para el drenaje de líquidos, sistemas de refrigeración y productos de aire controlado. Gracias a nuestra alianza estratégica con Inoxsystem SRL, Standard Tech SRL y CPA Engineered Solutions , nos hemos convertido en los distribuidores y representantes exclusivos de sus servicios en América Latina, consolidando nuestra posición en el mercado.
+                    {t('ABOUT_US_DESCRIPTION_1')}
                 </Typography>
                 <Typography sx={{ mt: 2, letterSpacing: '0.015em', textAlign: 'justify' }}>
-                Nuestra principal fortaleza radica en la capacidad de proporcionar soluciones integrales a clientes de diversos sectores, incluyendo alimentación, farmacéutica, vitivinícola, cosmética e industrial. Trabajamos en estrecha colaboración con nuestros clientes, comprendiendo sus necesidades específicas y diseñando soluciones personalizadas que se adaptan a sus requerimientos.
+                  {t('ABOUT_US_DESCRIPTION_2')}
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={6} sx={{ paddingTop: '0px !important'}}>
-              <CardMedia
-                loading="lazy"
-                sx={{
-                  width: '100%',
-                  borderRadius: '16px',
-                  objectFit: 'cover',
-                }}
-                src={backgroudImage}
-                component='img'
-                alt='Sobre Nosotros'
-              />
-            </Grid>
-            <Grid item xs={6} sx={{ paddingTop: '0px !important'}}>
-              <CardMedia
-                loading="lazy"
-                sx={{
-                  width: '100%',
-                  borderRadius: '16px',
-                  objectFit: 'cover',
-                }}
-                src={backgroudImage2}
-                component='img'
-                alt='Sobre Nosotros'
-              />
-            </Grid>
-            <Grid item xs={12} md={6} sx={{ paddingTop: '0px !important'}}>
-              <Box sx={{ display: 'flex', mt: 4}}>
-                <Box
-                  sx={{
-                    minWidth: '48px',
-                    height: '48px',
-                    borderRadius: '6px',
-                    transition: '0.5s',
-                    backgroundColor: '#A7B6E8',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    mr: 2,
-                  }}
-                >
-                  <BusinessCenterIcon sx={{ color: '#FFFFFF', width: '24px', height: '24px'}} />
+            {!isMobile && (
+              <>
+                <Grid item xs={6} sx={{ paddingTop: '0px !important'}}>
+                  <CardMedia
+                    loading="lazy"
+                    sx={{
+                      width: '100%',
+                      borderRadius: '16px',
+                      objectFit: 'cover',
+                    }}
+                    src={backgroudImage}
+                    component='img'
+                    alt='Sobre Nosotros'
+                  />
+                </Grid>
+                <Box sx={{ display: 'flex', alignItems: 'center'}}>
+                  <Grid item xs={6} sx={{ pt: '16px !important', pl: '50px' }}>
+                    <CardMedia
+                      loading="lazy"
+                      sx={{
+                        width: '100%',
+                        borderRadius: '16px',
+                        objectFit: 'cover',
+                      }}
+                      src={backgroudImage2}
+                      component='img'
+                      alt='Sobre Nosotros'
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6} sx={{ pl: '50px'}}>
+                    <Box sx={{ display: 'flex', mt: 4 }}>
+                      <Box
+                        sx={{
+                          minWidth: '48px',
+                          height: '48px',
+                          borderRadius: '6px',
+                          transition: '0.5s',
+                          backgroundColor: '#A7B6E8',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          mr: 2,
+                        }}
+                      >
+                        <BusinessCenterIcon sx={{ color: '#FFFFFF', width: '24px', height: '24px'}} />
+                      </Box>
+                      <Typography sx={{ textAlign: 'justify'}}>
+                        {t('ABOUT_US_ITEM_1')}
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', mt: 3 }}>
+                      <Box
+                        sx={{
+                          minWidth: '48px',
+                          height: '48px',
+                          borderRadius: '6px',
+                          transition: '0.5s',
+                          backgroundColor: '#A7B6E8',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          mr: 2,
+                        }}
+                      >
+                        <EngineeringIcon sx={{ color: '#FFFFFF', width: '24px', height: '24px'}} />
+                      </Box>
+                      <Typography sx={{ textAlign: 'justify'}}>
+                        {t('ABOUT_US_ITEM_2')}
+                      </Typography>
+                    </Box>
+                  </Grid>
                 </Box>
-                <Typography sx={{ textAlign: 'justify'}}>
-                Contamos con un equipo altamente capacitado que se dedica a brindar asesoramiento técnico especializado y a ofrecer productos de la más alta calidad. Nos complace poder ayudar a nuestros clientes a optimizar sus sistemas, garantizando la eficiencia y el rendimiento óptimo en sus operaciones.
-                </Typography>
-              </Box>
-              <Box sx={{ display: 'flex', mt: 3 }}>
-                <Box
-                  sx={{
-                    minWidth: '48px',
-                    height: '48px',
-                    borderRadius: '6px',
-                    transition: '0.5s',
-                    backgroundColor: '#A7B6E8',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    mr: 2,
-                  }}
-                >
-                  <EngineeringIcon sx={{ color: '#FFFFFF', width: '24px', height: '24px'}} />
+              </>
+            )}
+            {isMobile && (
+              <Grid item xs={12} md={6} sx={{ pt: '16px'}}>
+                <Box sx={{ display: 'flex', mt: 4 }}>
+                  <Box
+                    sx={{
+                      minWidth: '48px',
+                      height: '48px',
+                      borderRadius: '6px',
+                      transition: '0.5s',
+                      backgroundColor: '#A7B6E8',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                    }}
+                  >
+                    <BusinessCenterIcon sx={{ color: '#FFFFFF', width: '24px', height: '24px'}} />
+                  </Box>
+                  <Typography sx={{ textAlign: 'justify'}}>
+                    {t('ABOUT_US_ITEM_1')}
+                  </Typography>
                 </Box>
-                <Typography sx={{ textAlign: 'justify'}}>
-                  En Parnard, entendemos la importancia de contar con sistemas eficaces, innovadores y confiables en las industrias que servimos. Ofrecemos a nuestros clientes una experiencia segura, abordando sus necesidades varias a través de un único proveedor de confianza. 
-                </Typography>
-              </Box>
-            </Grid>
+                <Box sx={{ display: 'flex', mt: 3 }}>
+                  <Box
+                    sx={{
+                      minWidth: '48px',
+                      height: '48px',
+                      borderRadius: '6px',
+                      transition: '0.5s',
+                      backgroundColor: '#A7B6E8',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
+                    }}
+                  >
+                    <EngineeringIcon sx={{ color: '#FFFFFF', width: '24px', height: '24px'}} />
+                  </Box>
+                  <Typography sx={{ textAlign: 'justify'}}>
+                    {t('ABOUT_US_ITEM_2')}
+                  </Typography>
+                </Box>
+              </Grid>
+            )}
           </Grid>
           <Box sx={{ display: 'flex', mt: '50px', justifyContent: 'space-between' }}>
           </Box>

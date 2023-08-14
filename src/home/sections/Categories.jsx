@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import {
   Box,
   Grid,
@@ -48,6 +49,7 @@ import barrerasAire from '../../assets/barrerasAire.pdf';
 
 const Categories= () => {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isSm = useMediaQuery(theme.breakpoints.down("sm"));
@@ -65,11 +67,11 @@ const Categories= () => {
 
   const getCurrentCategoryList = () => {
     switch(categorySelected.name) {
-      case "Sistema de Drenaje":
+      case t('DRAINAGE_SYSTEM'):
         return drainageList;
-      case "Sistema de Refrigeración":
+      case t('COOLING_SYSTEM'):
         return refrigerationList;
-      case "Sistema de Aire Controlado":
+      case t('CONTROLLED_AIR_SYSTEM'):
         return airList;
       default:
         return null;
@@ -79,19 +81,19 @@ const Categories= () => {
   const categoriesList = [
     {
       imageUrl: drainageSystem,
-      name: "Sistema de Drenaje",
+      name: t('DRAINAGE_SYSTEM'),
     },
     {
       imageUrl: refrigerationSystem,
-      name: "Sistema de Refrigeración",
+      name: t('COOLING_SYSTEM'),
     },
     {
       imageUrl: controlledAirSystem,
-      name: "Sistema de Aire Controlado",
+      name: t('CONTROLLED_AIR_SYSTEM'),
     },
     {
       imageUrl: catalogoGeneral,
-      name: "Catálogo General",
+      name: t('GENERAL_CATALOGUE'),
     },
   ];
 
@@ -211,13 +213,14 @@ const Categories= () => {
                         width: '270px',
                         borderRadius: '16px',
                         objectFit: 'cover',
-                        filter: category.name === categorySelected?.name ? 'grayscale(0)' : 'grayscale(1)',
-                        opacity: category.name === categorySelected?.name ? 1 : 0.7,
+                        border: category.name === categorySelected?.name ? '4px solid #0a66c2' : 'none',
+                        // filter: category.name === categorySelected?.name ? 'grayscale(0)' : 'grayscale(1)',
+                        // opacity: category.name === categorySelected?.name ? 1 : 0.7,
                         cursor: 'pointer',
                         "&:hover": {
                           boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.3)",
-                          filter: 'grayscale(0)',
-                          opacity: 1,
+                          // filter: 'grayscale(0)',
+                          // opacity: 1,
                         },
                       }}
                       src={category.imageUrl}
@@ -238,7 +241,7 @@ const Categories= () => {
               ))}
             </Grid>
             {categorySelected
-              && (categorySelected.name !== 'Sistema de Aire Controlado' || isSm) && categorySelected.name !== 'Catálogo General' && (
+              && (categorySelected.name !== t('CONTROLLED_AIR_SYSTEM') || isSm) && categorySelected.name !== t('GENERAL_CATALOGUE') && (
               <Box sx={{ mt: '50px' }}>
                 <Carousel
                   slidesPerView={isMobile ? 1 : isSm ? 2 : 4}
@@ -283,7 +286,7 @@ const Categories= () => {
               </Carousel>
               </Box>
             )}
-            {categorySelected && categorySelected.name === 'Sistema de Aire Controlado' && !isSm && (
+            {categorySelected && categorySelected.name === t('CONTROLLED_AIR_SYSTEM') && !isSm && (
               <Box
                 sx={{
                   mt: '50px',
@@ -328,7 +331,7 @@ const Categories= () => {
                 ))}
             </Box>
             )}
-            {categorySelected && categorySelected.name === 'Catálogo General' && (
+            {categorySelected && categorySelected.name === t('GENERAL_CATALOGUE') && (
               <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center', mt: '50px'}}>
                 <List
                   sx={{ width: '720px' }}

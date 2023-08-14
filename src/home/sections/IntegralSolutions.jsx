@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import {
   Grid,
   useMediaQuery,
@@ -34,6 +35,7 @@ import controlledAirSystem from '../../assets/controlledAirSystem.jpg';
 
 const IntegralSolutions = () => {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
   const isSm = useMediaQuery(theme.breakpoints.down("sm"));
@@ -51,11 +53,11 @@ const IntegralSolutions = () => {
 
   const getCurrentCategoryList = () => {
     switch(categorySelected.name) {
-      case "Sistema de Drenaje":
+      case t('DRAINAGE_SYSTEM'):
         return drainageSystemList;
-      case "Sistema de Refrigeración":
+      case t('COOLING_SYSTEM'):
         return refrigerationSystemList;
-      case "Sistema de Aire Controlado":
+      case t('CONTROLLED_AIR_SYSTEM'):
         return controlledAirSystemList;
       default:
         return null;
@@ -65,15 +67,15 @@ const IntegralSolutions = () => {
   const categoriesSolutions = [
     {
       imageUrl: drainageSystem,
-      name: "Sistema de Drenaje",
+      name: t('DRAINAGE_SYSTEM'),
     },
     {
       imageUrl: refrigerationSystem,
-      name: "Sistema de Refrigeración",
+      name: t('COOLING_SYSTEM'),
     },
     {
       imageUrl: controlledAirSystem,
-      name: "Sistema de Aire Controlado",
+      name: t('CONTROLLED_AIR_SYSTEM'),
     },
   ];
 
@@ -147,7 +149,7 @@ const IntegralSolutions = () => {
       <div className="container">
         <Box spacing={isMobile ? 4 : 10}>
           <h2 className="mt-0 mb-0 inline-block">
-            Soluciones Aplicables
+            {t('APPLICABLE_SOLUTIONS')}
           </h2>
           <Box sx={{ mt: '50px'}}>
             <Grid container spacing='60px' sx={{ justifyContent: 'space-around'}}>
@@ -161,13 +163,14 @@ const IntegralSolutions = () => {
                         width: '300px',
                         borderRadius: '16px',
                         objectFit: 'cover',
-                        filter: category.name === categorySelected?.name ? 'grayscale(0)' : 'grayscale(1)',
-                        opacity: category.name === categorySelected?.name ? 1 : 0.7,
+                        border: category.name === categorySelected?.name ? '4px solid #0a66c2' : 'none',
+                        // filter: category.name === categorySelected?.name ? 'grayscale(0)' : 'grayscale(1)',
+                        // opacity: category.name === categorySelected?.name ? 1 : 0.7,
                         cursor: 'pointer',
                         "&:hover": {
                           boxShadow: "5px 5px 15px rgba(0, 0, 0, 0.3)",
-                          filter: 'grayscale(0)',
-                          opacity: 1,
+                          // filter: 'grayscale(0)',
+                          // opacity: 1,
                         },
                       }}
                       src={category.imageUrl}
@@ -183,11 +186,57 @@ const IntegralSolutions = () => {
                         <Divider sx={{ borderColor: '#A7B6E8', width: '50px', borderWidth: '1px'}} /> 
                       </Box>
                     )}
+                    {category.name === categorySelected?.name && isSm && (
+                      <Box sx={{ mt: '50px' }}>
+                        <Carousel
+                          slidesPerView={isMobile ? 1 : isSm ? 2 : 4}
+                          height={260}
+                          carouselId='solutions-swiper'
+                        >
+                          {getCurrentCategoryList().map((categoryList) => (
+                            <Box
+                              key={categoryList.name}
+                              sx={{
+                                width: '100%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                              }}
+                            >
+                              <CardMedia
+                                loading="lazy"
+                                sx={{
+                                  height: '200px',
+                                  width: '260px',
+                                  borderRadius: '16px',
+                                  objectFit: 'cover',
+                                }}
+                                src={categoryList.imageUrl}
+                                component='img'
+                                alt={categoryList.name}
+                              />
+                              <Box
+                                sx={{
+                                  mt: 3,
+                                  display: 'flex',
+                                  width: '100%',
+                                  justifyContent: 'center',
+                                  fontSize: '14px'
+                                }}
+                              >
+                                <h5 className="font-medium">{categoryList.name}</h5>
+                              </Box>
+                            </Box>
+                          ))}
+                        </Carousel>
+                      </Box>
+                    )}
                   </Box>
                 </Grid>
               ))}
             </Grid>
-            {categorySelected && (categorySelected.name !== 'Sistema de Refrigeración' || isSm) && (
+            {categorySelected && categorySelected.name !== t('COOLING_SYSTEM') && !isSm && (
               <Box sx={{ mt: '50px' }}>
                 <Carousel
                   slidesPerView={isMobile ? 1 : isSm ? 2 : 4}
@@ -233,7 +282,7 @@ const IntegralSolutions = () => {
               </Carousel>
             </Box>
             )}
-            {categorySelected && categorySelected.name === 'Sistema de Refrigeración' && !isSm && (
+            {categorySelected && categorySelected.name === t('COOLING_SYSTEM') && !isSm && (
               <Box
                 sx={{
                   mt: '50px',

@@ -1,71 +1,88 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import {
   Grid,
   Box,
   Typography,
   useMediaQuery,
+  CardMedia,
 } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
-import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
-import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
+
+import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 import ConstructionOutlinedIcon from '@mui/icons-material/ConstructionOutlined';
+import ManageSearchOutlinedIcon from '@mui/icons-material/ManageSearchOutlined';
+import TextSnippetOutlinedIcon from '@mui/icons-material/TextSnippetOutlined';
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+import EngineeringOutlinedIcon from '@mui/icons-material/EngineeringOutlined';
+
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+// import HandshakeOutlinedIcon from '@mui/icons-material/HandshakeOutlined';
+import DiamondOutlinedIcon from '@mui/icons-material/DiamondOutlined';
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
+// import Diversity3OutlinedIcon from '@mui/icons-material/Diversity3Outlined';
+
+import industrialSolution1 from '../../assets/industrialSolution1.jpg'
+import industrialSolution2 from '../../assets/industrialSolution2.jpg'
+
 
 const IndustrialSolutions = () => {
   const theme = useTheme();
   const isSm = useMediaQuery(theme.breakpoints.down("sm"));
+  const { t } = useTranslation();
 
     const firstColumn = [
         {
+          icon: EmojiObjectsOutlinedIcon,
+          description: t('INDUSTRIAL_SOLUTIONS_1'),
+        },
+        {
           icon: ConstructionOutlinedIcon,
-          description: 'Primeros acercamientos y estudios de sus proyectos.',
+          description: t('INDUSTRIAL_SOLUTIONS_2'),
         },
         {
-          icon: WatchLaterOutlinedIcon,
-          description: 'Materialización de sus ideas (croquis, dibujos técnicos, detalles constructivos).',
+          icon: ManageSearchOutlinedIcon,
+          description: t('INDUSTRIAL_SOLUTIONS_3'),
         },
         {
-          icon: LocalShippingOutlinedIcon,
-          description: 'Elección de los productos más apropiados para cada necesidad específica.',
-        },
-        {
-          icon: LanguageOutlinedIcon,
-          description: 'Elaboración y presentación de fichas técnicas a clientes.',
+          icon: TextSnippetOutlinedIcon,
+          description: t('INDUSTRIAL_SOLUTIONS_4'),
         },
         {
           icon: LocalShippingOutlinedIcon,
-          description: 'Gestión, coordinación en la entrega de sus productos y servicio postventa.  ',
+          description: t('INDUSTRIAL_SOLUTIONS_5'),
         },
         {
-          icon: LanguageOutlinedIcon,
-          description: 'Inspección bajo personal capacitado para garantizar el correcto funcionamiento de sus sistemas.',
+          icon: EngineeringOutlinedIcon,
+          description: t('INDUSTRIAL_SOLUTIONS_6'),
         },
       ];
 
       const secondColumn = [
         {
-          icon: ConstructionOutlinedIcon,
-          description: 'Productos fabricados en acero inoxidable AISI 304/316, soluciones de refrigeración industrial de alta tecnología y sistemas de aire controlado.',
+          icon: SettingsOutlinedIcon,
+          description: t('INDUSTRIAL_SOLUTIONS_7'),
         },
         {
-          icon: WatchLaterOutlinedIcon,
-          description: 'Proyectos respaldados por empresas europeas de una sólida trayectoria y experiencia en el mercado .',
+          icon: SettingsOutlinedIcon,
+          description: t('INDUSTRIAL_SOLUTIONS_8'),
         },
         {
-          icon: LocalShippingOutlinedIcon,
-          description: 'Nuestros productos cumplen con los estándares de calidad del mercado.',
-        },
-        {
-          icon: LanguageOutlinedIcon,
-          description: 'Artículos diseñados y fabricados exclusivamente en Europa.',
-        },
-        {
-          icon: LocalShippingOutlinedIcon,
-          description: 'Funcionamiento de sistemas garantizados.',
+          icon: DiamondOutlinedIcon,
+          description: t('INDUSTRIAL_SOLUTIONS_9'),
         },
         {
           icon: LanguageOutlinedIcon,
-          description: 'Capacitaciones constantes a cargo de técnicos experimentados en productos de Inoxsystem Srl, Standard Tech Srl y CPA Engineered Solutions.',
+          description: t('INDUSTRIAL_SOLUTIONS_10'),
+        },
+        {
+          icon: GppGoodOutlinedIcon,
+          description: t('INDUSTRIAL_SOLUTIONS_11'),
+        },
+        {
+          icon: GppGoodOutlinedIcon,
+          description: t('INDUSTRIAL_SOLUTIONS_12'),
         },
       ];
 
@@ -74,7 +91,7 @@ const IndustrialSolutions = () => {
         <section className="section" id="industrialSolutions">
           <div className="container">
             <h2 className="mt-0 mb-0 inline-block">
-              Soluciones Industriales
+              {t('INDUSTRIAL_SOLUTIONS')}
             </h2>
               <Grid
                 container
@@ -87,7 +104,7 @@ const IndustrialSolutions = () => {
                       sx={{ color: '#666 !important', fontWeight: 500, fontSize: '16px' }}
                       variant="h5"
                     >
-                      Asesoramiento Profesional
+                      {t('INDUSTRIAL_SOLUTION_SUBTITLE_1')}
                     </Typography>
                   </Box>
                   {firstColumn.map((item, ind) => (
@@ -113,13 +130,47 @@ const IndustrialSolutions = () => {
                     </Box>
                   ))}
                 </Grid>
+                {!isSm && (
+                  <>
+                    <Grid item xs={12} md={6} sx={{ pr: '40px' }}>
+                      <Box sx={{ mb: 3 }}>
+                        <CardMedia
+                          loading="lazy"
+                          sx={{
+                            width: '100%',
+                            borderRadius: '16px',
+                            objectFit: 'cover',
+                          }}
+                          src={industrialSolution1}
+                          component='img'
+                          alt='Soluciones industriales'
+                        />
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12} md={6} sx={{ pr: '40px' }}>
+                      <Box sx={{ mb: 3 }}>
+                        <CardMedia
+                          loading="lazy"
+                          sx={{
+                            width: '100%',
+                            borderRadius: '16px',
+                            objectFit: 'cover',
+                          }}
+                          src={industrialSolution2}
+                          component='img'
+                          alt='Soluciones industriales'
+                        />
+                      </Box>
+                    </Grid>
+                  </>
+                )}
                 <Grid item xs={12} md={6} sx={{ pl: isSm ? '16px !important' : '40px !important', pr: isSm ? '40px' : '0px' }}>
                   <Box sx={{ mb: 3 }}>
                     <Typography 
                       sx={{ color: '#666 !important', fontWeight: 500, fontSize: '16px' }}
                       variant="h5"
                     >
-                      Distribuidores y Representantes oficiales
+                      {t('INDUSTRIAL_SOLUTION_SUBTITLE_2')}
                     </Typography>
                   </Box>
                   {secondColumn.map((item, ind) => (

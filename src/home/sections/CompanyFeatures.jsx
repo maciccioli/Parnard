@@ -1,43 +1,38 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import {
   Grid,
-  Icon,
-  useMediaQuery,
-  Box,
-  Typography,
 } from "@mui/material";
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
 import ConstructionOutlinedIcon from '@mui/icons-material/ConstructionOutlined';
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-import EngineeringIcon from '@mui/icons-material/Engineering';
-import { useTheme } from '@mui/material/styles';
-import { Description } from "@mui/icons-material";
 
 const CompanyFeatures = () => {
-    const serviceList = [
-        {
-          icon: ConstructionOutlinedIcon,
-          title: "Soluciones de calidad",
-          description: 'Se trabaja con productos en acero inoxidable AISI 304 o 316, sistemas de refrigeración industrial de alta tecnología y soluciones de aire controlado y comprimido.',
-        },
-        {
-          icon: WatchLaterOutlinedIcon,
-          title: "Producción personalizada",
-          description: 'Nuestro enfoque en el proceso de elaboración, respaldado por un equipo especializado en diseño constructivo, garantiza la velocidad y eficiencia en la fabricación.',
-        },
-        {
-          icon: LocalShippingOutlinedIcon,
-          title: "Logística de entrega",
-          description: 'Gestionamos y coordinamos sus envíos con fábrica para realizar una pronta entrega.',
-        },
-        {
-          icon: LanguageOutlinedIcon,
-          title: "Calidad Europea",
-          description: 'Nuestros productos son diseñados y fabricados bajo los estándares de la más alta calidad europea.',
-        },
-      ];
+  const { t } = useTranslation();
+
+  const serviceList = [
+      {
+        icon: ConstructionOutlinedIcon,
+        title: t('QUALITY_SOLUTIONS'),
+        description: t('QUALITY_SOLUTIONS_DESCRIPTION'),
+      },
+      {
+        icon: WatchLaterOutlinedIcon,
+        title: t('CUSTOMIZED_PRODUCTION'),
+        description: t('CUSTOMIZED_PRODUCTION_DESCRIPTION'),
+      },
+      {
+        icon: LocalShippingOutlinedIcon,
+        title: t('DELIVERY_LOGISTICS'),
+        description: t('DELIVERY_LOGISTICS_DESCRIPTION'),
+      },
+      {
+        icon: LanguageOutlinedIcon,
+        title: t('EUROPEAN_QUALITY'),
+        description: t('EUROPEAN_QUALITY_DESCRIPTION'),
+      },
+    ];
     
       return (
         <section className="section" id="companyFeatures">
