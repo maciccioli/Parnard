@@ -17,7 +17,8 @@ import EmailIcon from '@mui/icons-material/Email';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import ScrollTo from "../common/ScrollTo";
-import logo from '../../assets/blackNavbarLogoEsp.png';
+import logoEs from '../../assets/blackNavbarLogoEsp.png';
+import logoEn from '../../assets/blackNavbarLogoEn.jpg';
 
 const TopBar1 = () => {
   const [isTop, setIsTop] = useState(true);
@@ -72,7 +73,9 @@ const TopBar1 = () => {
   }, [scrollableElement, handleScrollRef]);
 
   const message = 'Hola! Estoy interesado(a) en aprender más sobre sus servicios. ¿Podría recibir más información? Gracias.';
-  const encodedMessage = encodeURIComponent(message);
+  const message_en = 'Hello! I am interested in learning more about your services. Could I receive more information? Thank you.';
+  
+  const encodedMessage = encodeURIComponent(i18n.language === 'es' ? message : message_en );
 
   const whatsappUrl = `https://wa.me/541136541997?text=${encodedMessage}`;
 
@@ -96,7 +99,11 @@ const TopBar1 = () => {
       >
         <Box>
           <Box className="brand" sx={{ display: 'flex', alignItems: 'center'}}>
-            <img src={logo} height='46px' alt="Parnard" />
+            <img
+              src={i18n.language === 'es' ? logoEs : logoEn}
+              height='46px'
+              alt="Parnard"
+            />
           </Box>
         </Box>
         <Box>
@@ -141,7 +148,7 @@ const TopBar1 = () => {
             <Icon>{toggleIcon}</Icon>
           </IconButton>
         </Box>
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
           <IconButton
             component={Link}
             href="https://www.linkedin.com/company/parnard/about/"

@@ -1,4 +1,6 @@
 import React from "react";
+import i18n from 'i18next';
+import { useTranslation } from 'react-i18next';
 import {
   Box,
   Grid,
@@ -16,25 +18,24 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
-import { Link as ScrollLink } from 'react-scroll';
-
 const Footer1 = () => {
+  const { t } = useTranslation();
 
   const categoriesList = [
     {
-      title: 'Sistemas de Drenaje',
+      title: t('DRAINAGE_SYSTEM'),
       img: sewerage,
     },
     {
-      title: 'Sistemas de Refrigeración',
+      title: t('COOLING_SYSTEM'),
       img: cooling,
     },
     {
-      title: 'Sistemas de Aire Controlado',
+      title: t('CONTROLLED_AIR_SYSTEM'),
       img: conditioner,
     },
     {
-      title: 'Catálogos Generales',
+      title: t('GENERAL_CATALOGUE'),
       img: general,
     },
   ];
@@ -42,18 +43,14 @@ const Footer1 = () => {
   const messageLucas = 'Hola Lucas! Espero que te encuentres bien. Me gustaría hablar contigo. ¿Cuándo podríamos coordinar una llamada? Gracias!';
   const messageAgustin = 'Hola Agustín! Espero que te encuentres bien. Me gustaría hablar contigo. ¿Cuándo podríamos coordinar una llamada? Gracias!';
 
-  const encodedMessageLucas = encodeURIComponent(messageLucas);
-  const encodedMessageAgustin = encodeURIComponent(messageAgustin);
+  const messageLucasEn = 'Hi Lucas! I hope you are doing well. I would like to talk to you. When could we arrange a call? Thanks!';
+  const messageAgustinEn = 'Hi Agustin! I hope you are doing well. I would like to talk to you. When could we arrange a call? Thanks!';
+
+  const encodedMessageLucas = encodeURIComponent(i18n.language === 'es' ? messageLucas : messageLucasEn);
+  const encodedMessageAgustin = encodeURIComponent(i18n.language === 'es' ? messageAgustin : messageAgustinEn);
 
   const whatsappUrlLucas = `https://wa.me/541150116800?text=${encodedMessageLucas}`;
   const whatsappUrlAgustin = `https://wa.me/541136541997?text=${encodedMessageAgustin}`;
-
-  const handleCategoryClick = () => {
-    const productsElement = document.getElementById('products');
-    if (productsElement) {
-      productsElement.scrollIntoView();
-    }
-  };
 
   return (
     <Box sx={{ backgroundColor: '#3f50b5'}}>
@@ -71,20 +68,19 @@ const Footer1 = () => {
                   textAlign: 'justify',
                 }}
               >
-                Parnard es una empresa dedicada  a la ingeniería, asesoría técnica y venta de soluciones para el drenaje de líquidos, sistemas de refrigeración industrial y productos de aire controlado.  Brindando así, soluciones con la mejor tecnología del mercado a través de una alianza con tres de las empresas europeas más importantes del rubro, Inoxsystem Srl, Standard Tech SRL y CPA Engineered Solutions.
+                {t('ABOUT_US_FOOTER')}
               </p>
             </div>
           </Grid>
           <Grid item lg={3} md={3} sm={12}>
             <div className="p-8 h-full">
               <h4 className="text-20 mb-6 relative" style={{ color: '#FFFFFF' }}>
-                Productos
+                {t('PRODUCTS')}
               </h4>
               <Box>
                 {categoriesList.map((category) => (
                     <Box
                       sx={{ display: 'flex', alignItems: 'center', mb: 1.8 }}
-                      onClick={handleCategoryClick}
                     >
                       <img src={category.img} alt={category.title} />
                       <Typography
@@ -106,7 +102,7 @@ const Footer1 = () => {
           <Grid item lg={3} md={3} sm={12}>
             <Box sx={{ p: 4, pr: 0}}>
               <h4 className="text-20 mb-6 relative" style={{ color: '#FFFFFF' }}>
-                Contacto
+                {t('CONTACT')}
               </h4>
               <Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 1.8 }}>

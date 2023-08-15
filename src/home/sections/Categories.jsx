@@ -17,9 +17,9 @@ import { useTheme } from '@mui/material/styles';
 import Carousel from "../common/Carousel";
 import pdfIcon from '../../assets/pdfIcon.jpg'
 
-import drainageSystem from '../../assets/drainageSystem.jpg';
-import refrigerationSystem from '../../assets/refrigerationSystem.jpg';
-import controlledAirSystem from '../../assets/controlledAirSystem.jpg';
+import drainageSystem from '../../assets/drainageProduct.jpg';
+import refrigerationSystem from '../../assets/CoolingProduct.jpg';
+import controlledAirSystem from '../../assets/ControlledAirProduct.jpg';
 import catalogoGeneral from '../../assets/catalogoGeneral.jpg';
 
 import sumiderosCategory from '../../assets/sumiderosCategory.jpg';
@@ -199,7 +199,7 @@ const Categories= () => {
       <div className="container">
         <Box spacing={isMobile ? 4 : 10}>
           <h2 className="mt-0 mb-0 inline-block">
-            Productos
+            {t('PRODUCTS')}
           </h2>
           <Box sx={{ mt: '50px'}}>
             <Grid container spacing='60px' sx={{ justifyContent: 'space-around'}}>
@@ -236,12 +236,57 @@ const Categories= () => {
                         <Divider sx={{ borderColor: '#A7B6E8', width: '50px', borderWidth: '1px'}} /> 
                       </Box>
                     )}
+                    {category.name === categorySelected?.name && isSm && categorySelected.name !== t('GENERAL_CATALOGUE') && (
+                      <Box sx={{ mt: '50px' }}>
+                        <Carousel
+                          slidesPerView={isMobile ? 1 : isSm ? 2 : 4}
+                          height={260}
+                          carouselId='category-swiper'
+                        >
+                          {getCurrentCategoryList().map((categoryList) => (
+                            <Box
+                              sx={{
+                                width: '100%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                              }}
+                            >
+                              <CardMedia
+                                loading="lazy"
+                                sx={{
+                                  height: '200px',
+                                  width: '260px',
+                                  borderRadius: '16px',
+                                  objectFit: 'cover',
+                                }}
+                                src={categoryList.image}
+                                component='img'
+                                alt={categoryList.title}
+                              />
+                              <Box
+                                sx={{
+                                  mt: 3,
+                                  display: 'flex',
+                                  width: '100%',
+                                  justifyContent: 'center',
+                                  fontSize: '14px'
+                                }}
+                              >
+                                <h5 className="font-medium">{categoryList.title}</h5>
+                              </Box>
+                            </Box>
+                          ))}
+                        </Carousel>
+                      </Box>
+                    )}
                   </Box>
                 </Grid>
               ))}
             </Grid>
             {categorySelected
-              && (categorySelected.name !== t('CONTROLLED_AIR_SYSTEM') || isSm) && categorySelected.name !== t('GENERAL_CATALOGUE') && (
+              && categorySelected.name !== t('CONTROLLED_AIR_SYSTEM') && categorySelected.name !== t('GENERAL_CATALOGUE') && !isSm && (
               <Box sx={{ mt: '50px' }}>
                 <Carousel
                   slidesPerView={isMobile ? 1 : isSm ? 2 : 4}
@@ -283,7 +328,7 @@ const Categories= () => {
                       </Box>
                     </Box>
                   ))}
-              </Carousel>
+                </Carousel>
               </Box>
             )}
             {categorySelected && categorySelected.name === t('CONTROLLED_AIR_SYSTEM') && !isSm && (
@@ -354,7 +399,7 @@ const Categories= () => {
                                 }
                               }}
                             >
-                              Descargar PDF
+                              {t('DOWNLOAD_PDF')}
                             </Button>
                           </a>
                         </ListItemButton>

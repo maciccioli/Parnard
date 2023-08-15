@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 import {
   Grid,
   useMediaQuery,
@@ -18,12 +19,14 @@ const Contact = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
+  const { t } = useTranslation();
+
   return (
     <section className="section bg-light-gray" id="contact">
       <div className="container">
         <Box spacing={isMobile ? 4 : 10}>
           <h2 className="mt-0 mb-0 inline-block">
-            Contacto
+            {t('CONTACT')}
           </h2>
           <Grid container spacing={2} sx={{ mt: '50px' }}>
             <Grid item xs={12} sm={6}>
@@ -45,7 +48,7 @@ const Contact = () => {
                       <LocationOnOutlinedIcon sx={{ color: '#3f51b5', width: '24px', height: '24px' }} />
                     </Box>
                     <Typography sx={{ color: '#666 !important', fontSize: '20px !important', fontWeight: 500, mt: 1.4 }}>
-                      Dirección
+                      {t('ADDRESS')}
                     </Typography>
                     <Typography sx={{ color: '#000 !important', mt: 1.4, fontSize: '14px !important' }}>
                       Malvinas Argentinas 255 - (1406) CABA
@@ -101,7 +104,7 @@ const Contact = () => {
                       <PhoneOutlinedIcon sx={{ color: '#3f51b5', width: '24px', height: '24px' }} />
                     </Box>
                     <Typography sx={{ color: '#666 !important', fontSize: '20px !important', fontWeight: 500, mt: 1.4 }}>
-                      Teléfono
+                      {t('PHONE')}
                     </Typography>
                     <Typography sx={{ color: '#000 !important', mt: 1.4, fontSize: '14px !important' }}>
                       +54 9 11 3654-1997
@@ -118,7 +121,7 @@ const Contact = () => {
                   <Grid item xs={12} sm={6}>
                     <TextField
                       variant="standard"
-                      label="Nombre"
+                      label={t('NAME')}
                       fullWidth
                     />
                   </Grid>
@@ -132,14 +135,14 @@ const Contact = () => {
                   <Grid item xs={12} sx={{ mt: 1.4 }}>
                     <TextField
                       variant="standard"
-                      label="Asunto"
+                      label={t('SUBJECT')}
                       fullWidth
                     />
                   </Grid>
                   <Grid item xs={12} sx={{ mt: 1.4 }}>
                     <TextField
                       variant="standard"
-                      label="Mensaje"
+                      label={t('MESSAGE')}
                       fullWidth
                       multiline
                     />
@@ -149,7 +152,7 @@ const Contact = () => {
                   <Button
                     variant="contained"
                   >
-                    Enviar Mensaje
+                    {t('SEND_MESSAGE')}
                   </Button>
                 </Box>
               </CardContent>
