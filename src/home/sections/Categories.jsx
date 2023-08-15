@@ -57,7 +57,7 @@ const Categories= () => {
   const [categorySelected, setCategorySelected] = useState(null);
 
   const handleSelectCategory = (newCategory) => {
-    if(categorySelected && newCategory.name === categorySelected.name){
+    if(categorySelected && newCategory.id === categorySelected.id){
       setCategorySelected(null);
     }
     else{
@@ -66,12 +66,12 @@ const Categories= () => {
   }
 
   const getCurrentCategoryList = () => {
-    switch(categorySelected.name) {
-      case t('DRAINAGE_SYSTEM'):
+    switch(categorySelected.id) {
+      case 1:
         return drainageList;
-      case t('COOLING_SYSTEM'):
+      case 2:
         return refrigerationList;
-      case t('CONTROLLED_AIR_SYSTEM'):
+      case 3:
         return airList;
       default:
         return null;
@@ -80,89 +80,92 @@ const Categories= () => {
 
   const categoriesList = [
     {
+      id: 1,
       imageUrl: drainageSystem,
       name: t('DRAINAGE_SYSTEM'),
     },
     {
+      id: 2,
       imageUrl: refrigerationSystem,
       name: t('COOLING_SYSTEM'),
     },
     {
+      id: 3,
       imageUrl: controlledAirSystem,
       name: t('CONTROLLED_AIR_SYSTEM'),
     },
     {
+      id: 4,
       imageUrl: catalogoGeneral,
       name: t('GENERAL_CATALOGUE'),
     },
   ];
 
-
   const drainageList = [
     {
-      title: 'Sumideros',
+      title: t('DRAINS'),
       image: sumiderosCategory,
     },
     {
-      title: 'Canaletas',
+      title: t('GUTTERS'),
       image: canaletaCategories,
     },
     {
-      title: 'Rejillas',
+      title: t('GRATES'),
       image: rejillasCategories,
     },
     {
-      title: 'Tapas de Inspección',
+      title: t('INSPECTION_COVERS'),
       image: inspeccionCategories,
     },
     {
-      title: 'Perfiles de Terminación',
+      title: t('FINISHING_PROFILES'),
       image: terminacionCategories,
     },
     {
-      title: 'Accesorios',
+      title: t('ACCESSORIES'),
       image: accesoriosCategories,
     },
   ];
 
   const refrigerationList = [
     {
-      title: 'Higenización',
+      title: t('SANITIZATION'),
       image: higenizacion,
     },
     {
-      title: 'Habitaciones Limpias',
+      title: t('CLEAN_ROOMS'),
       image: habitacionesLimpias,
     },
     {
-      title: 'Maduración productos lácteos',
+      title: t('DAIRY_PRODUCTS'),
       image: productosLacteos,
     },
     {
-      title: 'Curado de salame',
+      title: t('SALAMI_CURING'),
       image: curadoSalame,
     },
     {
-      title: 'Curado de jamón crudo',
+      title: t('CURED_RAW_HAM'),
       image: curadoJamonCrudo,
     },
   ];
  
   const airList = [
     {
-      title: 'Tecnología de Barrera de Aire',
+      title: t('AIR_BARRIER_TECHNOLOGY'),
       image: barreraAire,
     },
     {
-      title: 'Ventiladores de Desestratificación',
+      title: t('DESTRATIFICATION_FANS'),
       image: ventiladores,
     },
     {
-      title: 'Sistemas de Secado',
+      title: t('DRYING_SYSTEM'),
       image: sistemaSecado,
     },
     {
-      title: 'Puertas de Acción Rápida',
+      title: t('RAPID_ACTION_DOORS'),
       image: puerta,
     },
   ];
@@ -213,7 +216,7 @@ const Categories= () => {
                         width: '270px',
                         borderRadius: '16px',
                         objectFit: 'cover',
-                        border: category.name === categorySelected?.name ? '4px solid #0a66c2' : 'none',
+                        border: category.id === categorySelected?.id ? '4px solid #0a66c2' : 'none',
                         // filter: category.name === categorySelected?.name ? 'grayscale(0)' : 'grayscale(1)',
                         // opacity: category.name === categorySelected?.name ? 1 : 0.7,
                         cursor: 'pointer',
@@ -231,12 +234,12 @@ const Categories= () => {
                     <Box sx={{ mt: 3, display: 'flex', width: '100%', justifyContent: 'center'}}>
                       <h5 className="font-medium">{category.name}</h5>
                     </Box>
-                    {category.name === categorySelected?.name && (
+                    {category.id === categorySelected?.id && (
                       <Box sx={{ mt: 1.2, display: 'flex', width: '100%', justifyContent: 'center'}}>
                         <Divider sx={{ borderColor: '#A7B6E8', width: '50px', borderWidth: '1px'}} /> 
                       </Box>
                     )}
-                    {category.name === categorySelected?.name && isSm && categorySelected.name !== t('GENERAL_CATALOGUE') && (
+                    {category.id === categorySelected?.id && isSm && categorySelected.id !== 4 && (
                       <Box sx={{ mt: '50px' }}>
                         <Carousel
                           slidesPerView={isMobile ? 1 : isSm ? 2 : 4}
@@ -286,7 +289,7 @@ const Categories= () => {
               ))}
             </Grid>
             {categorySelected
-              && categorySelected.name !== t('CONTROLLED_AIR_SYSTEM') && categorySelected.name !== t('GENERAL_CATALOGUE') && !isSm && (
+              && categorySelected.id !== 3 && categorySelected.id !== 4 && !isSm && (
               <Box sx={{ mt: '50px' }}>
                 <Carousel
                   slidesPerView={isMobile ? 1 : isSm ? 2 : 4}
@@ -331,7 +334,7 @@ const Categories= () => {
                 </Carousel>
               </Box>
             )}
-            {categorySelected && categorySelected.name === t('CONTROLLED_AIR_SYSTEM') && !isSm && (
+            {categorySelected && categorySelected.id === 3 && !isSm && (
               <Box
                 sx={{
                   mt: '50px',
@@ -376,7 +379,7 @@ const Categories= () => {
                 ))}
             </Box>
             )}
-            {categorySelected && categorySelected.name === t('GENERAL_CATALOGUE') && (
+            {categorySelected && categorySelected.id === 4 && (
               <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center', mt: '50px'}}>
                 <List
                   sx={{ width: '720px' }}

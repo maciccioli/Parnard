@@ -28,10 +28,6 @@ const TopBar1 = () => {
 
   const currentLanguage = i18n.language;
 
-  const handleLanguageChange = (language) => {
-    i18n.changeLanguage(language);
-  };
-
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -39,6 +35,11 @@ const TopBar1 = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLanguageChange = (language) => {
+    i18n.changeLanguage(language);
+    handleClose();
   };
 
   let scrollableElement = document.querySelector(".scrollable-content");

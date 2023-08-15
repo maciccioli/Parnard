@@ -43,7 +43,7 @@ const IntegralSolutions = () => {
   const [categorySelected, setCategorySelected] = useState(null);
 
   const handleSelectCategory = (newCategory) => {
-    if(categorySelected && newCategory.name === categorySelected.name){
+    if(categorySelected && newCategory.id === categorySelected.id){
       setCategorySelected(null);
     }
     else{
@@ -52,12 +52,12 @@ const IntegralSolutions = () => {
   }
 
   const getCurrentCategoryList = () => {
-    switch(categorySelected.name) {
-      case t('DRAINAGE_SYSTEM'):
+    switch(categorySelected.id) {
+      case 1:
         return drainageSystemList;
-      case t('COOLING_SYSTEM'):
+      case 2:
         return refrigerationSystemList;
-      case t('CONTROLLED_AIR_SYSTEM'):
+      case 3:
         return controlledAirSystemList;
       default:
         return null;
@@ -66,14 +66,17 @@ const IntegralSolutions = () => {
 
   const categoriesSolutions = [
     {
+      id: 1,
       imageUrl: drainageSystem,
       name: t('DRAINAGE_SYSTEM'),
     },
     {
+      id: 2,
       imageUrl: refrigerationSystem,
       name: t('COOLING_SYSTEM'),
     },
     {
+      id: 3,
       imageUrl: controlledAirSystem,
       name: t('CONTROLLED_AIR_SYSTEM'),
     },
@@ -82,65 +85,65 @@ const IntegralSolutions = () => {
   const drainageSystemList = [
     {
       imageUrl: cotidianeImage,
-      name: "Usos cotidianos",
+      name: t('EVERYDAT_USES'),
     },
     {
       imageUrl: cellarImage,
-      name: "Bodegas y Líquidos varios",
+      name: t('WINERIES'),
     },
     {
       imageUrl: kitchenImage,
-      name: "Cocinas profesionales",
+      name: t('PROFESSIONAL_KITCHENS'),
     },
     {
       imageUrl: butchersImage,
-      name: "Frígorificos y Carnicerías",
+      name: t('COLD_STORAGE'),
     },
     {
       imageUrl: breweriesImage,
-      name: "Cervecerías",
+      name: t('BREWERIES'),
     }
   ];
 
   const refrigerationSystemList = [
     {
       imageUrl: dairyIndustry,
-      name: "Industria Láctea",
+      name: t('DAIRY_INDUSTRY'),
     },
     {
       imageUrl: butcherIndustry,
-      name: "Industria Carnica",
+      name: t('MEAT_INDUSTRY'),
     },
     {
       imageUrl: bakingIndustry,
-      name: "Industria Panificadora",
+      name: t('BAKING_INDUSTRY'),
     },
   ];
 
   const controlledAirSystemList = [
     {
       imageUrl: airports,
-      name: "Aeropuertos",
+      name: t('AIRPORTS'),
     },
     {
       imageUrl: foodIndustry,
-      name: "Industria Alimentaria",
+      name: t('FOOD_INDUSTRY'),
     },
     {
       imageUrl: pharmaceuticalIndustry,
-      name: "Industria Farmacéutica",
+      name: t('PHARMACEUTICAL_INDUSTRY'),
     },
     {
       imageUrl: manufacturingIndustry,
-      name: "Industria Manufacturera",
+      name: t('MANUFACTURING_INDUSTRY'),
     },
     {
       imageUrl: retail,
-      name: "Retail",
+      name: t('REATIL'),
     },
     {
       imageUrl: warehouse,
-      name: "Almacén y Distribución",
+      name: t('WAREHOUSE'),
     },
   ];
 
@@ -163,7 +166,7 @@ const IntegralSolutions = () => {
                         width: '300px',
                         borderRadius: '16px',
                         objectFit: 'cover',
-                        border: category.name === categorySelected?.name ? '4px solid #0a66c2' : 'none',
+                        border: category.id === categorySelected?.id ? '4px solid #0a66c2' : 'none',
                         // filter: category.name === categorySelected?.name ? 'grayscale(0)' : 'grayscale(1)',
                         // opacity: category.name === categorySelected?.name ? 1 : 0.7,
                         cursor: 'pointer',
@@ -181,12 +184,12 @@ const IntegralSolutions = () => {
                     <Box sx={{ mt: 3, display: 'flex', width: '100%', justifyContent: 'center'}}>
                       <h5 className="font-medium">{category.name}</h5>
                     </Box>
-                    {category.name === categorySelected?.name && (
+                    {category.id === categorySelected?.id && (
                       <Box sx={{ mt: 1.2, display: 'flex', width: '100%', justifyContent: 'center'}}>
                         <Divider sx={{ borderColor: '#A7B6E8', width: '50px', borderWidth: '1px'}} /> 
                       </Box>
                     )}
-                    {category.name === categorySelected?.name && isSm && (
+                    {category.id === categorySelected?.id && isSm && (
                       <Box sx={{ mt: '50px' }}>
                         <Carousel
                           slidesPerView={isMobile ? 1 : isSm ? 2 : 4}
@@ -236,7 +239,7 @@ const IntegralSolutions = () => {
                 </Grid>
               ))}
             </Grid>
-            {categorySelected && categorySelected.name !== t('COOLING_SYSTEM') && !isSm && (
+            {categorySelected && categorySelected.id !== 2 && !isSm && (
               <Box sx={{ mt: '50px' }}>
                 <Carousel
                   slidesPerView={isMobile ? 1 : isSm ? 2 : 4}
@@ -282,7 +285,7 @@ const IntegralSolutions = () => {
               </Carousel>
             </Box>
             )}
-            {categorySelected && categorySelected.name === t('COOLING_SYSTEM') && !isSm && (
+            {categorySelected && categorySelected.id === 2 && !isSm && (
               <Box
                 sx={{
                   mt: '50px',
